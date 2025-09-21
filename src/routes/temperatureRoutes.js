@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const temperatureController = require('../controllers/temperatureController');
+const authenticateToken = require('../middleware/authMiddleware');
+
+router.use(authenticateToken);
 
 router.get('/celsiustofahrenheit/:celsius', temperatureController.celsiusToFahrenheit);
 router.get('/fahrenheittocelsius/:fahrenheit', temperatureController.fahrenheitToCelsius);
